@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallBehaviourScript : MonoBehaviour {
+
+    public GameObject bounceParticle;
     public float ymin, ymax;
 
     private Rigidbody2D rb;
@@ -24,7 +26,9 @@ public class BallBehaviourScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        print("hello");
-        rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+        rb.velocity = new Vector2(-rb.velocity.x*1.1f, rb.velocity.y);
+        Camera.main.GetComponent<ScreenShake>().Shake((int) (5*Mathf.Abs(rb.velocity.x)));
+        GameObject particles = (GameObject) Instantiate(bounceParticle, transform.position, Quaternion.identity);
+        Destroy(particles, 3);
     }
 }
