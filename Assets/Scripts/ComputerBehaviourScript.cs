@@ -15,9 +15,4 @@ public class ComputerBehaviourScript : MonoBehaviour {
         transform.position = new Vector2(transform.position.x, ball.transform.position.y);
 	}
 
-    void OnTriggerEnter(Collider other)
-    {
-        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
-    }
 }
