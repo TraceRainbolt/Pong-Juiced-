@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class ScreenShake : MonoBehaviour {
 
-    private int shakeCounter = 0;
+	private int shakeLife = 0;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-	
-	// Update is called once per frame
 	void Update () {
-        if (shakeCounter > 0)
-        {
-            transform.position = new Vector3(transform.position.x + Mathf.Sin(Time.frameCount*.3f)*.03f, 
-                                             transform.position.y + Mathf.Sin(Time.frameCount*.3f)*.03f,
+		if (shakeLife > 0) {
+            transform.position = new Vector3(transform.position.x + Mathf.Sin(Time.frameCount * .3f) * .03f, 
+                                             transform.position.y + Mathf.Sin(Time.frameCount * .3f) * .03f,
                                              transform.position.z);
-            shakeCounter--;
+			shakeLife--;
         }
 	}
 
-    public void Shake(int shakeCounter)
-    {
-        this.shakeCounter = shakeCounter;
+    public void Shake(int shakeLife) {
+		this.shakeLife = shakeLife;
     }
 }
